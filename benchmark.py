@@ -89,17 +89,17 @@ def run_benchmark():
         print(f"正在测试模型: {name}")
         
         # 1. 理论性能测试 (参数量与计算量)
-        # 测试核心数据：FLOPs下降，Params微升
+       
         params, flops, params_str, flops_str, cpu_time, cpu_std = measure_efficiency(model, device="cpu")
         
-        # 2. 根据模型名称，动态指定对应的权重文件名
+       
         acc = "尚未加载训练权重"
         weight_file = ""
         
         if name == "Baseline (EfficientNet-B0)":
-            weight_file = "best_lacm_efficientnet.pth"
-        elif name == "Improved (LACM-EfficientNet)":
             weight_file = "best_baseline_efficientnet.pth"
+        elif name == "Improved (LACM-EfficientNet)":
+            weight_file = "best_lacm_efficientnet.pth"
 
         # 如果匹配到了权重文件，就尝试加载并评估
         if weight_file:
